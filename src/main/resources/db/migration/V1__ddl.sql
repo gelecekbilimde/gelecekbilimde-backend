@@ -77,8 +77,31 @@ create table if not exists gb_user_verification
 create table if not exists gb_user_follow
 (
   id               bigint generated always as identity primary key,
-  follower_user_id varchar(36) not null,
-  followed_user_id varchar(36) not null,
+  follower_user_id
+  varchar
+(
+  36
+) not null,
+    followed_user_id varchar
+(
+    36
+) not null,
+    created_by varchar
+(
+    255
+) not null,
+    created_at timestamp
+(
+    0
+) not null,
+    updated_by varchar
+(
+    255
+),
+    updated_at timestamp
+(
+    0
+),
   constraint u__gb_user_follow__follower_user_id__followed_user_id unique (follower_user_id, followed_user_id),
   constraint fk__gb_user_follow__follower_user_id foreign key (follower_user_id) references gb_user (id),
   constraint fk__gb_user_follow__followed_user_id foreign key (followed_user_id) references gb_user (id)

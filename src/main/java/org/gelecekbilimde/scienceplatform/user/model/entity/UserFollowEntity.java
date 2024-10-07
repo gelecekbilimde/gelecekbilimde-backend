@@ -10,7 +10,7 @@ import org.gelecekbilimde.scienceplatform.common.model.entity.BaseEntity;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user_followers")
+@Table(name = "gb_user_follow")
 public class UserFollowEntity extends BaseEntity {
 
 	@Id
