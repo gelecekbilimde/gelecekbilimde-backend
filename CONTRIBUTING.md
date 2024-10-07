@@ -226,9 +226,6 @@ To maintain a consistent commit history, start your commit messages with a keywo
 - `#2 | imp: Added timestamp to API responses`
 - `#3 | fix: Resolved permission error when editing user's comment`
 
- ### Pull Request Title Standard
-- For pull requests, include the issue number and a brief description of the change:
-- Use #<issue_number> | prefix followed by the commit type and a concise description.
 
 ## API Response Examples
 
