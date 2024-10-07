@@ -10,6 +10,7 @@ import org.gelecekbilimde.scienceplatform.post.model.entity.CategoryEntity;
 import org.gelecekbilimde.scienceplatform.post.model.mapper.CategoryCreateRequestToCategoryEntityMapper;
 import org.gelecekbilimde.scienceplatform.post.model.mapper.CategoryEntityToCategoryMapper;
 import org.gelecekbilimde.scienceplatform.post.model.request.CategoryCreateRequest;
+import org.gelecekbilimde.scienceplatform.post.model.request.CategoryUpdateRequest;
 import org.gelecekbilimde.scienceplatform.post.repository.CategoryRepository;
 import org.gelecekbilimde.scienceplatform.post.service.CategoryService;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,11 @@ import java.util.Optional;
 class CategoryServiceImpl implements CategoryService {
 
 	private final CategoryRepository categoryRepository;
-
 	private final CategoryEntityToCategoryMapper categoryEntityToCategoryMapper = CategoryEntityToCategoryMapper.initialize();
 	private final CategoryCreateRequestToCategoryEntityMapper categoryCreateRequestToCategoryEntityMapper = CategoryCreateRequestToCategoryEntityMapper.initialize();
 
 	@Override
-	public List<Category> getCategories() {
+	public List<Category> findAll() {
 		return categoryEntityToCategoryMapper.map(categoryRepository.findAll());
 	}
 
@@ -41,7 +41,7 @@ class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void createCategory(CategoryCreateRequest request) {
+	public void create(CategoryCreateRequest request) {
 		if (categoryRepository.existsByName(request.getName())) {
 			throw new CategoryAlreadyExistException(request.getName());
 		}
@@ -51,7 +51,7 @@ class CategoryServiceImpl implements CategoryService {
 		List<CategoryEntity> categories = categoryRepository.findAllByParentId(request.getParentId()).stream().toList();
 
 		for (CategoryEntity categoryEntity : categories) {
-			if (categoryEntity.getOrder() >= request.getOrder()) {
+			if (categoryEntity.getOrderNumber() >= request.getOrderNumber()) {
 				categoryEntity.increaseOrder();
 			}
 		}
@@ -60,17 +60,33 @@ class CategoryServiceImpl implements CategoryService {
 		categoryRepository.saveAll(categories);
 	}
 
+
 	@Override
-	public void changeCategoryName(Long id, String newName) {
+	public void update(Long id, CategoryUpdateRequest request) {
 		CategoryEntity categoryEntity = categoryRepository.findById(id)
 			.orElseThrow(() -> new CategoryNotFoundException(id));
 
-		categoryEntity.setName(newName);
+		if (categoryRepository.findByName(request.getName())
+			.filter(existingCategory -> !existingCategory.getId().equals(id))
+			.isPresent()) {
+			throw new CategoryAlreadyExistException(request.getName());
+		}
+		categoryEntity.setName(request.getName());
+
+		if (request.getParentId() != null) {
+			if (!categoryRepository.existsById(request.getParentId())) {
+				throw new CategoryParentNotFoundException(request.getParentId());
+			}
+			categoryEntity.setParentId(request.getParentId());
+		}
+
+		categoryEntity.setDescription(request.getDescription());
+
 		categoryRepository.save(categoryEntity);
 	}
 
 	@Override
-	public void deleteCategory(Long id) {
+	public void delete(Long id) {
 		CategoryEntity categoryEntity = categoryRepository.findById(id)
 			.orElseThrow(() -> new CategoryNotFoundException(id));
 

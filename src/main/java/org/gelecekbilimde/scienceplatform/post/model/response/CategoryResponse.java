@@ -11,9 +11,9 @@ import lombok.Setter;
 public class CategoryResponse {
 	private Long id;
 	private String name;
-	private Long order;
+	private String description;
+	private Long orderNumber;
 	private String slug;
 	private String icon;
-
 	private Long parentId;
 }

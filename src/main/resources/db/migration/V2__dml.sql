@@ -176,35 +176,32 @@ values ('e3a1a32d-fcd7-46f0-bb2b-201df6b2b808', '2902d3c0-040e-47f6-b894-e724842
 
 
 
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (0, 1, 'Fizik', 'fizik', null,
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (0, 1, 'Fizik', 'Fizik kategorisidir.', 'fizik', null,
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (1, 1, 'Biyoloji', 'biyoloji', null,
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (1, 1, 'Biyoloji', 'Biyoloji kategorisidir.', 'biyoloji', null,
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (2, 1, 'Kimya', 'kimya', null,
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (2, 1, 'Kimya', 'Kimya kategorisidir.', 'kimya', null,
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (1, null, 'Teknoloji', 'teknoloji', 'cpu',
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (1, null, 'Teknoloji', 'Teknoloji kategorisidir.', 'teknoloji', 'cpu',
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (2, null, 'Felsefe', 'felsefe', 'book',
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (2, null, 'Felsefe', 'Felsefe kategorisidir.', 'felsefe', 'book',
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (1, 6, 'Ontoloji', 'ontoloji', null,
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (1, 6, 'Ontoloji', 'Ontoloji kategorisidir.', 'ontoloji', null,
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (2, 6, 'Ahlak Felsefesi', 'ahlak-felsefesi', null,
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (2, 6, 'Ahlak Felsefesi', 'Ahlak Felsefesi kategorisidir.', 'ahlak-felsefesi', null,
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (0, 6, 'Epistemoloji', 'epistelomoji', null,
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (0, 6, 'Epistemoloji', 'Epistemoloji kategorisidir.', 'epistemoloji', null,
         'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (5, null, 'testCat', 'test-category', 'g',
-        'gelecekbilimde', current_timestamp);
-insert into gb_category (order_number, parent_id, name, slug, icon, created_by, created_at)
-values (0, null, 'Bilim', 'bilim', 'flask-conical',
+insert into gb_category (order_number, parent_id, name, description, slug, icon, created_by, created_at)
+values (0, null, 'Bilim', 'Bilim kategorisidir.', 'bilim', 'flask-conical',
         'gelecekbilimde', current_timestamp);
 
 

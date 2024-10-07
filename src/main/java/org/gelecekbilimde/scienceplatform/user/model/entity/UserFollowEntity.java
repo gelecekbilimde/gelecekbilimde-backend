@@ -24,5 +24,4 @@ public class UserFollowEntity extends BaseEntity {
 	@Column(name = "followed_user_id")
 	private String followedUserId;
 
-
 }

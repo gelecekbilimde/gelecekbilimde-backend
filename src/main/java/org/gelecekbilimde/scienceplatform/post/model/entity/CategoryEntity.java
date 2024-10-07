@@ -32,8 +32,11 @@ public class CategoryEntity extends BaseEntity {
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "description")
+	private String description;
+
 	@Column(name = "order_number")
-	private Integer order;
+	private Integer orderNumber;
 
 	@Column(name = "slug")
 	private String slug;
@@ -49,6 +52,6 @@ public class CategoryEntity extends BaseEntity {
 	private CategoryEntity parent;
 
 	public void increaseOrder() {
-		this.order++;
+		this.orderNumber++;
 	}
 }
